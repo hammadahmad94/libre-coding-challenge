@@ -82,6 +82,7 @@ export default function ChatComponent({ onChatStart, onRoadmapGenerated, isLoadi
         onSend={handleSend} 
         onGeneratePlan={handleGeneratePlan}
         isLoading={isLoading}
+        canGenerate={messages.some(m => m.sender === 'user')}
       />
     </Paper>
   );

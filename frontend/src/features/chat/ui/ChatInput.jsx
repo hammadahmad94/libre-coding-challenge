@@ -9,7 +9,7 @@ const SAMPLE_QUESTIONS = [
   "Plan a trip to Japan"
 ];
 
-export default function ChatInput({ onSend, onGeneratePlan, isLoading }) {
+export default function ChatInput({ onSend, onGeneratePlan, isLoading, canGenerate }) {
   const [input, setInput] = useState('');
 
   const handleSend = () => {
@@ -65,11 +65,11 @@ export default function ChatInput({ onSend, onGeneratePlan, isLoading }) {
           }}
         />
         
-        <Tooltip title="Create a detailed roadmap based on our conversation">
+        <Tooltip title={!canGenerate ? "Start a conversation to generate a plan" : "Create a detailed roadmap based on our conversation"}>
             <span> {/* Span needed for Tooltip on disabled button */}
                 <IconButton 
                     onClick={onGeneratePlan}
-                    disabled={isLoading}
+                    disabled={isLoading || !canGenerate}
                     sx={{ 
                         bgcolor: 'secondary.main', 
                         color: 'white',

@@ -1,4 +1,4 @@
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, Tooltip } from '@mui/material';
 import { Map, Share2 } from 'lucide-react';
 
 export default function RoadmapHeader() {
@@ -13,14 +13,19 @@ export default function RoadmapHeader() {
           Your generated implementation plan
         </Typography>
       </Box>
-      <Button 
-        variant="outlined" 
-        size="small" 
-        startIcon={<Share2 size={16} />}
-        sx={{ borderRadius: 2, textTransform: 'none', borderColor: 'rgba(255,255,255,0.2)', color: 'text.secondary' }}
-      >
-        Export
-      </Button>
+      <Tooltip title="Coming in v2">
+        <span>
+          <Button 
+            variant="outlined" 
+            size="small" 
+            disabled
+            startIcon={<Share2 size={16} />}
+            sx={{ borderRadius: 2, textTransform: 'none', borderColor: 'rgba(255,255,255,0.2)', color: 'text.secondary' }}
+          >
+            Export
+          </Button>
+        </span>
+      </Tooltip>
     </Box>
   );
 }
