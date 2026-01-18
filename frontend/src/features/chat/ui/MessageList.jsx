@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { Box, Paper, Typography, Avatar } from '@mui/material';
 import { Bot, User } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 
 export default function MessageList({ messages, isTyping }) {
@@ -39,12 +40,15 @@ export default function MessageList({ messages, isTyping }) {
               borderRadius: 2,
               bgcolor: msg.sender === 'user' ? 'primary.main' : 'background.default',
               color: msg.sender === 'user' ? '#fff' : 'text.primary',
-              border: msg.sender === 'ai' ? '1px solid rgba(255,255,255,0.05)' : 'none'
+              border: msg.sender === 'ai' ? '1px solid rgba(255,255,255,0.05)' : 'none',
+              '& p': { m: 0, lineHeight: 1.6 },
+              '& ul, & ol': { mt: 1, mb: 1, pl: 2 },
+              '& li': { mb: 0.5 }
             }}
           >
-            <Typography variant="body1" sx={{ fontSize: '0.95rem', lineHeight: 1.6 }}>
+            <ReactMarkdown>
               {msg.text}
-            </Typography>
+            </ReactMarkdown>
           </Paper>
 
           {msg.sender === 'user' && (
