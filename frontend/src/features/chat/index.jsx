@@ -13,7 +13,7 @@ export default function ChatComponent({
     isLoading: externalLoading = false 
 }) {
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hello! I'm Pathway. What big goal do you want to tackle today?", sender: 'ai' }
+    { id: 1, text: "Hello! I'm Roadmap AI. What big goal do you want to tackle today?", sender: 'ai' }
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const [isGeneratingPlan, setIsGeneratingPlan] = useState(false);

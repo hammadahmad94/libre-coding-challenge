@@ -1,6 +1,6 @@
-# Pathway - AI Goal Decomposition Tool
+# Roadmap AI - AI Goal Decomposition Tool
 
-Pathway is an AI-powered consultant that helps users break down high-level, ambitious goals (like "Launch a Newsletter" or "Learn Python") into concrete, actionable implementation plans.
+Roadmap AI is an AI-powered consultant that helps users break down high-level, ambitious goals (like "Launch a Newsletter" or "Learn Python") into concrete, actionable implementation plans.
 
 ## 🚀 Features
 
