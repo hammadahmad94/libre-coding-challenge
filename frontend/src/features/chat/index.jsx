@@ -6,13 +6,20 @@ import ChatInput from './ui/ChatInput';
 import ChatSkeleton from './ui/ChatSkeleton';
 import { sendMessage, generateRoadmap } from './api';
 
-export default function ChatComponent({ onChatStart, onRoadmapGenerated, isLoading: externalLoading = false }) {
+export default function ChatComponent({ 
+    onChatStart, 
+    onRoadmapGenerated, 
+    onPlanGenerationStart,
+    onPlanGenerationEnd,
+    isLoading: externalLoading = false 
+}) {
   const [messages, setMessages] = useState([
     { id: 1, text: "Hello! I'm Pathway. What big goal do you want to tackle today?", sender: 'ai' }
   ]);
-  const [internalLoading, setInternalLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isGeneratingPlan, setIsGeneratingPlan] = useState(false);
 
-  const isLoading = externalLoading || internalLoading;
+  const isLoading = externalLoading || isGeneratingPlan;
 
   const handleSend = async (inputText) => {
     if (onChatStart) {
@@ -21,7 +28,7 @@ export default function ChatComponent({ onChatStart, onRoadmapGenerated, isLoadi
     
     const userMessage = { id: Date.now(), text: inputText, sender: 'user' };
     setMessages(prev => [...prev, userMessage]);
-    setInternalLoading(true);
+    setIsTyping(true);
 
     try {
         // Prepare history for API
@@ -46,12 +53,14 @@ export default function ChatComponent({ onChatStart, onRoadmapGenerated, isLoadi
             sender: 'ai' 
         }]);
     } finally {
-        setInternalLoading(false);
+        setIsTyping(false);
     }
   };
 
   const handleGeneratePlan = async () => {
-      setInternalLoading(true);
+      setIsGeneratingPlan(true);
+      if (onPlanGenerationStart) onPlanGenerationStart();
+
       try {
         const history = messages.map(m => ({
             role: m.sender === 'ai' ? 'assistant' : 'user',
@@ -65,18 +74,15 @@ export default function ChatComponent({ onChatStart, onRoadmapGenerated, isLoadi
       } catch (error) {
           console.error("Failed to generate plan:", error);
       } finally {
-          setInternalLoading(false);
+          setIsGeneratingPlan(false);
+          if (onPlanGenerationEnd) onPlanGenerationEnd();
       }
   };
 
   return (
     <Paper sx={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: 3, elevation: 3 }}>
       <ChatHeader />
-      {isLoading ? (
-        <ChatSkeleton />
-      ) : (
-        <MessageList messages={messages} />
-      )}
+      <MessageList messages={messages} isTyping={isTyping} />
       
       <ChatInput 
         onSend={handleSend} 

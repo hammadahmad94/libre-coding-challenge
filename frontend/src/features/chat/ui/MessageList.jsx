@@ -3,7 +3,7 @@ import { Box, Paper, Typography, Avatar } from '@mui/material';
 import { Bot, User } from 'lucide-react';
 
 
-export default function MessageList({ messages }) {
+export default function MessageList({ messages, isTyping }) {
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -12,7 +12,7 @@ export default function MessageList({ messages }) {
  
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, isTyping]);
 
   return (
     <Box sx={{ flex: 1, overflowY: 'auto', p: 2, display: 'flex', flexDirection: 'column', gap: 2, minHeight: 0 }}>
@@ -54,6 +54,30 @@ export default function MessageList({ messages }) {
           )}
         </Box>
       ))}
+      
+      {isTyping && (
+        <Box sx={{ display: 'flex', justifyContent: 'flex-start', gap: 1.5 }}>
+            <Avatar sx={{ bgcolor: 'primary.main', width: 32, height: 32 }}>
+              <Bot size={18} />
+            </Avatar>
+            <Paper 
+                elevation={0}
+                sx={{ 
+                  p: 2, 
+                  borderRadius: 2,
+                  bgcolor: 'background.default',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+            >
+                <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+                    Thinking...
+                </Typography>
+            </Paper>
+        </Box>
+      )}
+      
       <div ref={messagesEndRef} />
     </Box>
   );
