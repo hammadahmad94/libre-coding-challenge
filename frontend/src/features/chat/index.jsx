@@ -3,8 +3,9 @@ import { Paper } from '@mui/material';
 import ChatHeader from './ui/ChatHeader';
 import MessageList from './ui/MessageList';
 import ChatInput from './ui/ChatInput';
+import ChatSkeleton from './ui/ChatSkeleton';
 
-export default function ChatComponent({ onChatStart }) {
+export default function ChatComponent({ onChatStart, isLoading = false }) {
   const [messages, setMessages] = useState([
     { id: 1, text: "Hello! I'm Pathway. What big goal do you want to tackle today?", sender: 'ai' }
   ]);
@@ -31,7 +32,13 @@ export default function ChatComponent({ onChatStart }) {
   return (
     <Paper sx={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: 3, elevation: 3 }}>
       <ChatHeader />
-      <MessageList messages={messages} />
+      
+      {isLoading ? (
+        <ChatSkeleton />
+      ) : (
+        <MessageList messages={messages} />
+      )}
+      
       <ChatInput onSend={handleSend} />
     </Paper>
   );
