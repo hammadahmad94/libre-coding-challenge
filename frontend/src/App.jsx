@@ -23,8 +23,6 @@ function App() {
     }
   };
 
-  const togglePlan = () => setHasPlan(!hasPlan);
-  const toggleLoading = () => setIsLoading(!isLoading);
 
   return (
     <ThemeProvider theme={theme}>
@@ -43,12 +41,6 @@ function App() {
             isLoading={isLoading} 
             data={roadmapData}
           />
-        }
-        debugToggle={
-           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: 20 }}>
-              <button onClick={togglePlan} style={{ opacity: 0.5 }}>Toggle Mode (Debug)</button>
-              <button onClick={toggleLoading} style={{ opacity: 0.5 }}>Toggle Loading (Debug)</button>
-           </div>
         }
       />
     </ThemeProvider>
