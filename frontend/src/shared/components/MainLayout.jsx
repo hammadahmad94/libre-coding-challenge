@@ -6,11 +6,22 @@ export default function MainLayout({ hasPlan, chatSlot, roadmapSlot, debugToggle
     <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
       
       {/* Main Workspace */}
-      <Container maxWidth={hasPlan ? false : 'md'} sx={{ flexGrow: 1, py: 4, transition: 'all 0.5s ease-in-out' }}>
+      <Container 
+        maxWidth={hasPlan ? false : 'md'} 
+        sx={{ 
+          flexGrow: 1, 
+          py: 2, 
+          transition: 'all 0.5s ease-in-out',
+          height: '100%', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          overflow: 'hidden' 
+        }}
+      >
         
         {hasPlan ? (
           /* SPLIT VIEW */
-          <Box sx={{ height: '100%', display: 'flex', gap: 2 }}>
+          <Box sx={{ flexGrow: 1, display: 'flex', gap: 2, minHeight: 0 }}>
             <Box sx={{ width: '30%', height: '100%' }}>
               {chatSlot}
             </Box>

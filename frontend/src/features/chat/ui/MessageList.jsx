@@ -15,7 +15,7 @@ export default function MessageList({ messages }) {
   }, [messages]);
 
   return (
-    <Box sx={{ flexGrow: 1, overflowY: 'auto', p: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Box sx={{ flex: 1, overflowY: 'auto', p: 2, display: 'flex', flexDirection: 'column', gap: 2, minHeight: 0 }}>
       {messages.map((msg) => (
         <Box 
           key={msg.id} 
