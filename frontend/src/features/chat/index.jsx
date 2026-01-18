@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Paper, Box, Button } from '@mui/material';
+import { Paper } from '@mui/material';
 import ChatHeader from './ui/ChatHeader';
 import MessageList from './ui/MessageList';
 import ChatInput from './ui/ChatInput';
