@@ -1,6 +1,5 @@
-import React from 'react';
 import { Box, Container, Grid } from '@mui/material';
-import PropTypes from 'prop-types';
+
 
 export default function MainLayout({ hasPlan, chatSlot, roadmapSlot, debugToggle }) {
   return (
@@ -24,7 +23,6 @@ export default function MainLayout({ hasPlan, chatSlot, roadmapSlot, debugToggle
           <Box sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
              <Box sx={{ width: '100%', maxWidth: 600, height: '80%' }}>
                 {chatSlot}
-                {/* Debug Button to trigger transition */}
                 {debugToggle}
              </Box>
           </Box>
@@ -35,9 +33,4 @@ export default function MainLayout({ hasPlan, chatSlot, roadmapSlot, debugToggle
   );
 }
 
-MainLayout.propTypes = {
-  hasPlan: PropTypes.bool.isRequired,
-  chatSlot: PropTypes.node.isRequired,
-  roadmapSlot: PropTypes.node.isRequired,
-  debugToggle: PropTypes.node
-};
+
