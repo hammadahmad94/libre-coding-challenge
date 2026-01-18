@@ -3,7 +3,6 @@ import { Paper, Box, Button } from '@mui/material';
 import ChatHeader from './ui/ChatHeader';
 import MessageList from './ui/MessageList';
 import ChatInput from './ui/ChatInput';
-import ChatSkeleton from './ui/ChatSkeleton';
 import { sendMessage, generateRoadmap } from './api';
 
 export default function ChatComponent({ 
@@ -31,7 +30,6 @@ export default function ChatComponent({
     setIsTyping(true);
 
     try {
-        // Prepare history for API
         const history = [...messages, userMessage].map(m => ({
             role: m.sender === 'ai' ? 'assistant' : 'user',
             content: m.text

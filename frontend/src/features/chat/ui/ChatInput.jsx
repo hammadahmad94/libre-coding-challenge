@@ -27,12 +27,10 @@ export default function ChatInput({ onSend, onGeneratePlan, isLoading, canGenera
 
   const handleSampleClick = (question) => {
       setInput(question);
-      // Optional: auto-focus or auto-send? Sticking to populate for now as per plan
   };
 
   return (
-    <Box sx={{ p: 2, bgcolor: 'background.paper', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-      {/* Sample Questions */}
+    <Box sx={{ p: 2, bgcolor: 'background.paper', borderTop: 1, borderColor: 'divider' }}>
       <Stack direction="row" spacing={1} sx={{ mb: 2, overflowX: 'auto', pb: 0.5 }}>
           {SAMPLE_QUESTIONS.map((q) => (
               <Chip 
@@ -41,7 +39,7 @@ export default function ChatInput({ onSend, onGeneratePlan, isLoading, canGenera
                 onClick={() => handleSampleClick(q)} 
                 size="small" 
                 clickable 
-                sx={{ bgcolor: 'background.default', border: '1px solid rgba(255,255,255,0.1)' }}
+                sx={{ bgcolor: 'background.default', border: 1, borderColor: 'divider' }}
               />
           ))}
       </Stack>
@@ -66,7 +64,7 @@ export default function ChatInput({ onSend, onGeneratePlan, isLoading, canGenera
         />
         
         <Tooltip title={!canGenerate ? "Start a conversation to generate a plan" : "Create a detailed roadmap based on our conversation"}>
-            <span> {/* Span needed for Tooltip on disabled button */}
+            <span>
                 <IconButton 
                     onClick={onGeneratePlan}
                     disabled={isLoading || !canGenerate}

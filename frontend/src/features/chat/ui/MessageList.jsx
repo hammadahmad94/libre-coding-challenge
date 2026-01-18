@@ -27,8 +27,17 @@ export default function MessageList({ messages, isTyping }) {
           }}
         >
           {msg.sender === 'ai' && (
-            <Avatar sx={{ bgcolor: 'primary.main', width: 32, height: 32 }}>
-              <Bot size={18} />
+            <Avatar 
+                sx={{ 
+                    bgcolor: 'transparent', 
+                    color: 'primary.main',
+                    width: 32, 
+                    height: 32,
+                    border: '1px solid',
+                    borderColor: 'divider'
+                }}
+            >
+              <Bot size={20} />
             </Avatar>
           )}
           
@@ -40,7 +49,8 @@ export default function MessageList({ messages, isTyping }) {
               borderRadius: 2,
               bgcolor: msg.sender === 'user' ? 'primary.main' : 'background.default',
               color: msg.sender === 'user' ? '#fff' : 'text.primary',
-              border: msg.sender === 'ai' ? '1px solid rgba(255,255,255,0.05)' : 'none',
+              border: msg.sender === 'ai' ? 1 : 'none',
+              borderColor: 'divider',
               '& p': { m: 0, lineHeight: 1.6 },
               '& ul, & ol': { mt: 1, mb: 1, pl: 2 },
               '& li': { mb: 0.5 }
@@ -61,8 +71,17 @@ export default function MessageList({ messages, isTyping }) {
       
       {isTyping && (
         <Box sx={{ display: 'flex', justifyContent: 'flex-start', gap: 1.5 }}>
-            <Avatar sx={{ bgcolor: 'primary.main', width: 32, height: 32 }}>
-              <Bot size={18} />
+            <Avatar 
+                sx={{ 
+                    bgcolor: 'transparent', 
+                    color: 'primary.main',
+                    width: 32, 
+                    height: 32,
+                    border: '1px solid',
+                    borderColor: 'divider'
+                }}
+            >
+              <Bot size={20} />
             </Avatar>
             <Paper 
                 elevation={0}
@@ -70,7 +89,8 @@ export default function MessageList({ messages, isTyping }) {
                   p: 2, 
                   borderRadius: 2,
                   bgcolor: 'background.default',
-                  border: '1px solid rgba(255,255,255,0.05)',
+                  border: 1,
+                  borderColor: 'divider',
                   display: 'flex',
                   alignItems: 'center'
                 }}
