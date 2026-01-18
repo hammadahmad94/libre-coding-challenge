@@ -10,14 +10,14 @@ export default function MainLayout({ hasPlan, chatSlot, roadmapSlot, debugToggle
         
         {hasPlan ? (
           /* SPLIT VIEW */
-          <Grid container spacing={3} sx={{ height: '100%' }}>
-            <Grid item xs={12} md={4} sx={{ height: '100%' }}>
+          <Box sx={{ height: '100%', display: 'flex', gap: 2 }}>
+            <Box sx={{ width: '30%', height: '100%' }}>
               {chatSlot}
-            </Grid>
-            <Grid item xs={12} md={8} sx={{ height: '100%' }}>
+            </Box>
+            <Box sx={{ width: '70%', height: '100%' }}>
               {roadmapSlot}
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         ) : (
            /* CENTERED VIEW */
           <Box sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

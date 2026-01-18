@@ -4,12 +4,16 @@ import ChatHeader from './ui/ChatHeader';
 import MessageList from './ui/MessageList';
 import ChatInput from './ui/ChatInput';
 
-export default function ChatComponent() {
+export default function ChatComponent({ onChatStart }) {
   const [messages, setMessages] = useState([
     { id: 1, text: "Hello! I'm Pathway. What big goal do you want to tackle today?", sender: 'ai' }
   ]);
 
   const handleSend = (inputText) => {
+    if (onChatStart) {
+      onChatStart();
+    }
+    
     //@todo: will be replaed with backend api call
     const newMessage = { id: Date.now(), text: inputText, sender: 'user' };
     setMessages(prev => [...prev, newMessage]);

@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import Chat  from './features/chat';
-import { RoadmapComponent } from './features/roadmap';
+import ChatComponent  from './features/chat';
+import RoadmapComponent from './features/roadmap';
 import { theme } from './shared/theme';
 import MainLayout from './shared/components/MainLayout';
 
 function App() {
   const [hasPlan, setHasPlan] = useState(false); // Default to false for MVP start
 
+
+  const handleChatStart = () => {
+    if (!hasPlan) {
+      setHasPlan(true);
+    }
+  };
 
   const togglePlan = () => setHasPlan(!hasPlan);
 
@@ -16,7 +22,7 @@ function App() {
       <CssBaseline />
       <MainLayout 
         hasPlan={hasPlan}
-        chatSlot={<Chat />}
+        chatSlot={<ChatComponent onChatStart={handleChatStart} />}
         roadmapSlot={<RoadmapComponent />}
         debugToggle={
            <button onClick={togglePlan} style={{marginTop: 20, opacity: 0.5}}>Toggle Mode (Debug)</button>
