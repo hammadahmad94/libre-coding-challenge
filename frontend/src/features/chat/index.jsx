@@ -72,19 +72,17 @@ export default function ChatComponent({ onChatStart, onRoadmapGenerated, isLoadi
   return (
     <Paper sx={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: 3, elevation: 3 }}>
       <ChatHeader />
-      <Box sx={{ p: 1, display: 'flex', justifyContent: 'flex-end' }}>
-          <Button variant="outlined" size="small" onClick={handleGeneratePlan} disabled={isLoading}>
-              Generate Plan
-          </Button>
-      </Box>
-      
       {isLoading ? (
         <ChatSkeleton />
       ) : (
         <MessageList messages={messages} />
       )}
       
-      <ChatInput onSend={handleSend} />
+      <ChatInput 
+        onSend={handleSend} 
+        onGeneratePlan={handleGeneratePlan}
+        isLoading={isLoading}
+      />
     </Paper>
   );
 }
