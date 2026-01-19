@@ -27,7 +27,7 @@ def get_consultation_response(messages: list[ChatMessage]) -> str:
     api_messages = [system_prompt] + formatted_messages
 
     response = client.chat.completions.create(
-        model="gpt-4o", # Using a high-quality model
+        model="gpt-4o",
         messages=api_messages,
         temperature=0.7
     )

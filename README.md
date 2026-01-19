@@ -1,5 +1,7 @@
 # Roadmap AI - AI Goal Decomposition Tool
 
+[Video Presentation](https://www.dropbox.com/scl/fi/vvcgj772r7e3q2cl9n9kq/libre-challenge-vidoe.mov?rlkey=4ye6keq1jmq9c292guojsyuja&st=hkohuvnl&dl=0)
+
 Roadmap AI is an AI-powered consultant that helps users break down high-level, ambitious goals (like "Launch a Newsletter" or "Learn Python") into concrete, actionable implementation plans.
 
 ## 🚀 Features
